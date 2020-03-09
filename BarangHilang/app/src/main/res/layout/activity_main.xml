@@ -26,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:textAlignment="center"
                 android:text="Selamat Datang!"
                 android:textStyle="bold"/>
 
@@ -55,34 +54,49 @@
         android:orientation="vertical"
         android:layout_marginTop="130dp">
 
-        <Button
-            android:id="@+id/btn_tambah_brghilang"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:textSize="20dp"
-            android:textColor="#ffffff"
-            android:background="#00D8D8"
-            android:text="Tambah Barang Hilang"/>
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btn_List_brghilang"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:textSize="20dp"
-            android:onClick="tampil_data"
-            android:textColor="#ffffff"
-            android:background="#1DC900"
-            android:text="List barang Hilang"/>
+            <Button
+                android:id="@+id/btn_tambah_brghilang"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                android:background="#00D8D8"
+                android:layout_weight="1"
+                android:text="Tambah Barang Hilang"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/btn_List_brghilang"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="20dp"
+                android:onClick="tampil_data"
+                android:textColor="#ffffff"
+                android:background="#1DC900"
+                android:layout_weight="1"
+                android:text="List barang Hilang"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/btn_Profile"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
             android:textSize="20dp"
             android:textColor="#ffffff"
             android:background="#D37500"
+            android:layout_weight="1"
             android:text="Profile"/>
 
         <Button
@@ -90,10 +104,14 @@
             android:layout_height="100dp"
             android:id="@+id/btn_logout"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
             android:background="#C50000"
             android:textColor="#ffffff"
+            android:layout_weight="1"
             android:textSize="20dp"
             android:text="LOGOUT"/>
+
+    </LinearLayout>
 
     </LinearLayout>
 

@@ -12,6 +12,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.baranghilang.app.AppController;
 import com.android.baranghilang.data.Data;
@@ -33,7 +34,7 @@ import static com.android.baranghilang.Login.TAG_NIM;
 import static com.android.baranghilang.Login.my_shared_preferences;
 import static com.android.baranghilang.Login.session_status;
 
-public class tampil_data extends AppCompatActivity {
+public class tampil_data extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     ListView list;
     Adapter adapter;
@@ -41,6 +42,7 @@ public class tampil_data extends AppCompatActivity {
     boolean session = false;
     List<Data> itemlist = new ArrayList<Data>();
     SharedPreferences sharedPreferences;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     private static String url_select     = Server.URL + "select.php";
 
@@ -59,13 +61,20 @@ public class tampil_data extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tampil_data);
         list    = (ListView) findViewById(R.id.list_view);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe);
 
         nim = getIntent().getStringExtra(TAG_XNIM);
         nama = getIntent().getStringExtra(TAG_XNAMA);
+
         sharedPreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+
         session = sharedPreferences.getBoolean(session_status, false);
-        adapter = new com.android.baranghilang.adapter.Adapter(tampil_data.this, itemlist);
+
+        adapter = new com.android.baranghilang.adapter.Adapter(itemlist, getApplicationContext());
         list.setAdapter((BaseAdapter) adapter);
+
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         if (session) {
             Intent intent = new Intent(tampil_data.this, MainActivity.class);
             intent.putExtra(TAG_NIM, nim);
@@ -93,6 +102,8 @@ public class tampil_data extends AppCompatActivity {
                         item.setNama(object.getString(TAG_NAMA));
                         item.setDetail(object.getString(TAG_DETAIL));
                         item.setWaktu(object.getString(TAG_WAKTU));
+                        item.setSrc(object.getString(TAG_IMAGE));
+
 
                         itemlist.add(item);
                     } catch (JSONException e) {
@@ -119,5 +130,12 @@ public class tampil_data extends AppCompatActivity {
         intent.putExtra(TAG_NIM, nim);
         intent.putExtra(TAG_NAMA, nama);
         startActivity(intent);
+    }
+
+    @Override
+    public void onRefresh() {
+        itemlist.clear();
+        ((BaseAdapter)adapter).notifyDataSetChanged();
+        callVolley();
     }
 }
