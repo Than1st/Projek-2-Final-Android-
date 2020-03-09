@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     tools:context="com.android.baranghilang.MainActivity">
 
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="150dp">
+        android:layout_marginTop="130dp">
 
         <Button
             android:id="@+id/btn_tambah_brghilang"
@@ -68,7 +68,9 @@
             android:id="@+id/btn_List_brghilang"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_marginTop="10dp"
             android:textSize="20dp"
+            android:onClick="tampil_data"
             android:textColor="#ffffff"
             android:background="#1DC900"
             android:text="List barang Hilang"/>
@@ -77,6 +79,7 @@
             android:id="@+id/btn_Profile"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_marginTop="10dp"
             android:textSize="20dp"
             android:textColor="#ffffff"
             android:background="#D37500"
@@ -86,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:id="@+id/btn_logout"
+            android:layout_marginTop="10dp"
             android:background="#C50000"
             android:textColor="#ffffff"
             android:textSize="20dp"

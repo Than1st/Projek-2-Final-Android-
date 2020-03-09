@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static com.android.baranghilang.Login.session_status;
+
 public class MainActivity extends AppCompatActivity {
     Button btn_logout;
     TextView txt_nim, txt_nama;
     String nim, nama;
     SharedPreferences sharedpreferences;
+    Boolean session = false;
 
     public static final String TAG_NIM = "nim";
     public static final String TAG_NAMA = "nama";
@@ -32,9 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
         nim = getIntent().getStringExtra(TAG_NIM);
         nama = getIntent().getStringExtra(TAG_NAMA);
+        session = sharedpreferences.getBoolean(session_status, false);
 
         txt_nim.setText(nim);
         txt_nama.setText(nama);
+
+        if (session) {
+            Intent intent = new Intent(MainActivity.this, tampil_data.class);
+            intent.putExtra(TAG_NIM, nim);
+            intent.putExtra(TAG_NAMA, nama);
+        }
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
 
@@ -43,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 // update login session ke FALSE dan mengosongkan nilai id dan username
                 SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putBoolean(Login.session_status, false);
+                editor.putBoolean(session_status, false);
                 editor.putString(TAG_NIM, null);
                 editor.putString(TAG_NAMA, null);
                 editor.commit();
@@ -54,5 +64,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void tampil_data(View view) {
+        Intent intent = new Intent(MainActivity.this, tampil_data.class);
+        intent.putExtra(TAG_NIM, nim);
+        intent.putExtra(TAG_NAMA, nama);
+        startActivity(intent);
     }
 }
