@@ -1,7 +1,5 @@
 package com.android.baranghilang.data;
 
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 public class Data {
     private String id_brghilang, nama, detail, waktu, src;
 
@@ -53,6 +51,7 @@ public class Data {
     }
 
     public void setSrc(String src) {
-        this.src = src;
+        String image = "http://192.168.11.1/barang_hilang/img/";
+        this.src = image + src;
     }
 }

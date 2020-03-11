@@ -80,7 +80,16 @@ public class tampil_data extends AppCompatActivity implements SwipeRefreshLayout
             intent.putExtra(TAG_NIM, nim);
             intent.putExtra(TAG_NAMA, nama);
         }
-        callVolley();
+        swipeRefreshLayout.post(new Runnable() {
+                       @Override
+                       public void run() {
+                           swipeRefreshLayout.setRefreshing(true);
+                           itemlist.clear();
+                           ((BaseAdapter)adapter).notifyDataSetChanged();
+                           callVolley();
+                       }
+                   }
+        );
 
     }
 
@@ -112,12 +121,14 @@ public class tampil_data extends AppCompatActivity implements SwipeRefreshLayout
                 }
 
                 ((BaseAdapter)adapter).notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
             }
         }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 

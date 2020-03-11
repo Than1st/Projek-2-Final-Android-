@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="120dp"
             android:text="Nama Barang Hilang"
-            android:textSize="20dp"/>
+            android:textSize="25dp"/>
         <TextView
             android:id="@+id/txt_Detail"
             android:layout_width="match_parent"
@@ -48,26 +48,6 @@
             android:layout_marginTop="150dp"
             android:textSize="20dp"
             android:text="Waktu"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="260dp">
-
-            <Button
-                android:id="@+id/btn_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="DELETE"
-                android:layout_weight="1"/>
-
-            <Button
-                android:id="@+id/btn_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="EDIt"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
 
         <Button
             android:id="@+id/btn_ditemukan"

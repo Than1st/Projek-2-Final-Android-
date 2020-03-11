@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2020 at 02:34 PM
+-- Generation Time: Mar 11, 2020 at 02:05 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -44,30 +44,10 @@ CREATE TABLE `brghilang` (
 --
 
 INSERT INTO `brghilang` (`id_brghilang`, `nama`, `kategori`, `detail`, `waktu_ditemukan`, `waktu_dikembalikan`, `status`, `src`) VALUES
-('1', 'Flashdisk HP', 'Electronic', 'stainless steel', '2020-03-07 11:32:37', '0000-00-00 00:00:00', '0', 'http://192.168.42.59/barang_hilang/img/1.jpg'),
-('2', 'Laptop Macbook', 'Electronic', 'Tipis, putih', '2020-03-07 11:34:02', '0000-00-00 00:00:00', '0', 'http://192.168.42.59/barang_hilang/img/2.jpg\r\n'),
-('3', 'Topi Hitam', 'Pakaian', 'warna Hitam', '2020-03-07 13:51:52', '2020-03-07 13:51:52', '0', 'http://192.168.42.59/barang_hilang/img/3.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `nim` char(10) NOT NULL,
-  `nama` varchar(30) NOT NULL,
-  `jabatan` enum('asisten','spv') NOT NULL,
-  `notelp` varchar(15) NOT NULL,
-  `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`nim`, `nama`, `jabatan`, `notelp`, `password`) VALUES
-('1911500641', 'Sulthan', 'asisten', '0895326653527', '123');
+('1', 'Flashdisk HP', 'Electronic', 'stainless steel', '2020-03-07 11:32:37', '0000-00-00 00:00:00', '0', '1.jpg'),
+('2', 'Laptop Macbook', 'Electronic', 'Tipis, putih', '2020-03-07 11:34:02', '0000-00-00 00:00:00', '0', '2.jpg\r\n'),
+('3', 'Topi Hitam', 'Pakaian', 'warna Hitam', '2020-03-07 13:51:52', '2020-03-07 13:51:52', '0', '3.jpg'),
+('4', 'Adapter Xiaomi', 'Electronic', 'Warna Putih', '2020-03-11 17:37:02', '0000-00-00 00:00:00', '0', '4.jpg');
 
 --
 -- Indexes for dumped tables
@@ -78,12 +58,6 @@ INSERT INTO `user` (`nim`, `nama`, `jabatan`, `notelp`, `password`) VALUES
 --
 ALTER TABLE `brghilang`
   ADD PRIMARY KEY (`id_brghilang`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`nim`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
